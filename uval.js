@@ -7,9 +7,9 @@ canvas.width = window.innerWidth;
 const cx = canvas.width / 2;
 const cy = canvas.height / 2;
 
-const fontSize = 12;
+const fontSize = 8;
 
-const b = 20; // box dimension (bxb)
+const b = 10; // box dimension (bxb)
 
 function resetCanvas() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -18,23 +18,31 @@ function resetCanvas() {
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function drawBox(x, y, n) {
+function drawBox(x, y, n, m) {
 	if (isPrime(n)) {
-		ctx.fillStyle = "black";
-	} else {
 		ctx.fillStyle = "blue";
+	} else {
+		let rem = m % 3;
+		ctx.fillStyle =
+			rem === 0
+				? "#111111"
+				: rem === 1
+					? "#242424"
+					: rem === 2
+						? "#474747"
+						: "#474747";
 	}
 
 	let newX = x - b / 2;
 	let newY = y - b / 2;
-	ctx.fillRect(newX, newY, b, b);
+	ctx.fillRect(newX, newY, b + 1, b + 1); // + 1 to fix unwanted spaces between rows
 
 	// writing number
-	if (n <= 100) {
+	if (m <= 1) {
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle"; // vertical
 		ctx.font = `${fontSize}px Arial`;
-		ctx.fillStyle = "#ffffff9e";
+		ctx.fillStyle = "#dadada9e";
 		ctx.fillText(n, x, y);
 	}
 }
@@ -43,10 +51,10 @@ function isPrime(n) {
 	if (n <= 1) return false;
 
 	for (let i = 2; i * i <= n; i++) {
-		if (n % i === 0) return true;
+		if (n % i === 0) return false;
 	}
 
-	return false;
+	return true;
 }
 
 //     000000
@@ -56,13 +64,15 @@ function isPrime(n) {
 //     000000
 //          0
 
-// rdlluu rrrdddlllluuuu rrrrrdddddlllllluuuuuu
-//    0         1                  2
+//   -    rdlluurr rdddlllluuuurrrr rdddddlllllluuuuuurrrrrr
+//  m=0     1         2                  3
+
 // lets say m starts from 0, where m is the round
-// r = 2*m + 1
-// d = r
-// l = 2*m + 2
+// r1 = 1
+// d = 2m-1
+// l = 2m
 // u = l
+// r2 = 2m
 
 function main(maxRounds = 100) {
 	let currentX = cx;
@@ -70,29 +80,34 @@ function main(maxRounds = 100) {
 
 	// drawing middle box (1)
 	let n = 1; // n = number
-	drawBox(cx, cy, 1);
+	let m = 0; // round or distance from center
+	drawBox(cx, cy, 1, 0);
 	n++;
+	m++;
 
 	// others
-	for (let m = 0; m < maxRounds; m++) {
-		const r = 2 * m + 1;
-		const d = r;
-		const l = 2 * m + 2;
+	for (m; m < maxRounds; m++) {
+		const r1 = 1;
+		const d = 2 * m - 1;
+		const l = 2 * m;
 		const u = l;
+		const r2 = 2 * m;
 
-		let total = r + d + l + u;
+		let total = r1 + d + l + u + r2;
 		for (let i = 0; i < total; i++) {
-			if (i < r) {
+			if (i < r1) {
 				currentX += b;
-			} else if (i < r + d) {
+			} else if (i < r1 + d) {
 				currentY += b;
-			} else if (i < r + d + l) {
+			} else if (i < r1 + d + l) {
 				currentX -= b;
-			} else {
+			} else if (i < r1 + d + l + u) {
 				currentY -= b;
+			} else {
+				currentX += b;
 			}
 
-			drawBox(currentX, currentY, n);
+			drawBox(currentX, currentY, n, m);
 			n++;
 		}
 	}
