@@ -67,50 +67,67 @@ function isPrime(n) {
 //   -    rdlluurr rdddlllluuuurrrr rdddddlllllluuuuuurrrrrr
 //  m=0     1         2                  3
 
-// lets say m starts from 0, where m is the round
+// lets say m starts from 0 (but we care from 1), where m is the round
 // r1 = 1
 // d = 2m-1
 // l = 2m
 // u = l
 // r2 = 2m
 
-function main(maxRounds = 100) {
+function main(maxRounds = 50) {
 	let currentX = cx;
 	let currentY = cy;
 
-	// drawing middle box (1)
 	let n = 1; // n = number
 	let m = 0; // round or distance from center
-	drawBox(cx, cy, 1, 0);
-	n++;
-	m++;
 
-	// others
-	for (m; m < maxRounds; m++) {
-		const r1 = 1;
-		const d = 2 * m - 1;
-		const l = 2 * m;
-		const u = l;
-		const r2 = 2 * m;
+	let total = 0,
+		r1 = 0,
+		d = 0,
+		l = 0,
+		u = 0,
+		r2 = 0,
+		i = 0;
 
-		let total = r1 + d + l + u + r2;
-		for (let i = 0; i < total; i++) {
-			if (i < r1) {
-				currentX += b;
-			} else if (i < r1 + d) {
-				currentY += b;
-			} else if (i < r1 + d + l) {
-				currentX -= b;
-			} else if (i < r1 + d + l + u) {
-				currentY -= b;
-			} else {
-				currentX += b;
-			}
+	function frame() {
+		if (i < r1) {
+			currentX += b;
+		} else if (i < r1 + d) {
+			currentY += b;
+		} else if (i < r1 + d + l) {
+			currentX -= b;
+		} else if (i < r1 + d + l + u) {
+			currentY -= b;
+		} else {
+			currentX += b;
+		}
 
-			drawBox(currentX, currentY, n, m);
-			n++;
+		drawBox(currentX, currentY, n, m);
+		n++;
+		i++;
+
+		if (i >= total) {
+			m++;
+			i = 0;
+
+			r1 = 1;
+			d = 2 * m - 1;
+			l = 2 * m;
+			u = l;
+			r2 = 2 * m;
+
+			total = r1 + d + l + u + r2;
+		}
+
+		if (m < maxRounds) {
+			// requestAnimationFrame(frame);
+			setTimeout(() => {
+				frame();
+			}, 0.1);
 		}
 	}
+
+	frame();
 }
 
 resetCanvas();
