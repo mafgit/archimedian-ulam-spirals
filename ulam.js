@@ -98,7 +98,7 @@ function ulam(maxRounds = 50) {
 			if (!animStopped)
 				setTimeout(() => {
 					frame();
-				}, 0.1);
+				}, 10);
 		}
 	}
 
