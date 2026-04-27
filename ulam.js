@@ -12,7 +12,7 @@ const fontSize = 8;
 function resetCanvas() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	// bg
-	ctx.fillStyle = "#000224";
+	ctx.fillStyle = "#03000f";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 

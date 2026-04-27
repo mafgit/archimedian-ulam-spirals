@@ -1,16 +1,16 @@
 const homeBtn = document.getElementById("home-btn");
 
 function hideIntro() {
-	canvas.style.display = "block";
-	intro.style.display = "none";
-	homeBtn.style.display = "block";
+	canvas.classList.add("visible")
+	intro.classList.remove("visible")
+	homeBtn.classList.add("visible")
     animStopped = false
 }
 
 function showIntro() {
-	canvas.style.display = "none";
-	intro.style.display = "flex";
-	homeBtn.style.display = "none";
+	canvas.classList.remove("visible")
+	intro.classList.add("visible");
+	homeBtn.classList.remove("visible")
     animStopped = true
 }
 
