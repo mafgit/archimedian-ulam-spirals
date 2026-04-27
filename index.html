@@ -1,18 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <canvas id="canvas">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<button id="home-btn">Home</button>
 
-    </canvas>
+		<div id="intro">
+			<h1>Demo</h1>
 
-    <script src="uval.js"></script>
-    <script src="archimedian.js"></script>
-    <script src="main.js"></script>
-</body>
+			<h3>Choose</h3>
+
+			<div id="options">
+				<div>
+					<h2>Archimedian Spiral</h2>
+
+					<ul>
+						<li>Polar coordinates with radius and angle (radians)</li>
+						<li>Both equal and incrementing at the same time</li>
+						<li>Prime numbers highlighted</li>
+					</ul>
+
+					<button id="archimedian-btn">CONTINUE</button>
+				</div>
+
+				<div>
+					<h2>Ulam Spiral</h2>
+
+					<ul>
+						<li>Grid layout with boxes</li>
+						<li>Numbers increasing in a spiral fashion</li>
+						<li>Prime numbers highlighted</li>
+					</ul>
+
+					<button id="ulam-btn">CONTINUE</button>
+				</div>
+			</div>
+		</div>
+
+		<canvas id="canvas"></canvas>
+
+		<script>
+			let animStopped = true;
+		</script>
+
+		<script src="ulam.js"></script>
+		<script src="archimedian.js"></script>
+		<script src="main.js"></script>
+	</body>
 </html>

@@ -1,4 +1,6 @@
 function archimedian(maxPoints = 1000) {
+	resetCanvas();
+
 	const b = 3;
 
 	function drawPoint(r, t, prevCoords = null) {
@@ -7,13 +9,13 @@ function archimedian(maxPoints = 1000) {
 
 		// if (isPrime(r)) ctx.fillStyle = "white";
 		// else {
-			const rem = r % 3;
-			if (rem === 0) ctx.fillStyle = "#84edff";
-			else if (rem === 1) ctx.fillStyle = "#ff6a71";
-			else if (rem === 2) ctx.fillStyle = "#8cff5f";
-			else ctx.fillStyle = "black";
+		const rem = r % 3;
+		if (rem === 0) ctx.fillStyle = "#84edff";
+		else if (rem === 1) ctx.fillStyle = "#ff6a71";
+		else if (rem === 2) ctx.fillStyle = "#8cff5f";
+		else ctx.fillStyle = "black";
 
-			// ctx.fillStyle = "#000224";
+		// ctx.fillStyle = "#000224";
 		// }
 
 		ctx.beginPath();
@@ -37,8 +39,6 @@ function archimedian(maxPoints = 1000) {
 	// 	}
 	// }
 
-	resetCanvas();
-
 	let i = 1;
 	let prevCoords = null;
 
@@ -46,7 +46,7 @@ function archimedian(maxPoints = 1000) {
 		prevCoords = drawPoint(i, i, prevCoords);
 
 		i++;
-		if (i <= maxPoints) setTimeout(frame, 1);
+		if (i <= maxPoints) if (!animStopped) setTimeout(frame, 1);
 	}
 
 	frame();

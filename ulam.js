@@ -44,6 +44,8 @@ function isPrime(n) {
 // r2 = 2m
 
 function ulam(maxRounds = 50) {
+	resetCanvas();
+
 	const b = 10; // box dimension (bxb)
 
 	function drawBox(x, y, n, m) {
@@ -74,8 +76,6 @@ function ulam(maxRounds = 50) {
 			ctx.fillText(n, x, y);
 		}
 	}
-
-	resetCanvas();
 
 	let currentX = cx;
 	let currentY = cy;
@@ -123,6 +123,7 @@ function ulam(maxRounds = 50) {
 
 		if (m < maxRounds) {
 			// requestAnimationFrame(frame);
+			if (!animStopped)
 			setTimeout(() => {
 				frame();
 			}, 0.1);
