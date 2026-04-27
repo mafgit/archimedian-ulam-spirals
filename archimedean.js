@@ -1,4 +1,4 @@
-function archimedian(
+function archimedean(
 	showOnlyPrimes = false,
 	dontGivePrimesSeparateColor = false,
 	maxPoints = 1000,
@@ -76,4 +76,4 @@ function archimedian(
 	// ctx.stroke();
 }
 
-// archimedian();
+// archimedean();

@@ -30,11 +30,11 @@ document.getElementById("ulam-btn").onclick = () => {
 	ulam();
 };
 
-document.getElementById("archimedian-btn").onclick = () => {
+document.getElementById("archimedean-btn").onclick = () => {
 	hideIntro();
 	info.innerText = "White = Prime";
-	animHeading.innerText = "Archimedian";
-	archimedian();
+	animHeading.innerText = "Archimedean";
+	archimedean();
 };
 
 homeBtn.onclick = () => {
