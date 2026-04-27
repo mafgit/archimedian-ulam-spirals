@@ -9,42 +9,11 @@ const cy = canvas.height / 2;
 
 const fontSize = 8;
 
-const b = 10; // box dimension (bxb)
-
 function resetCanvas() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	// bg
-	ctx.fillStyle = "white";
+	ctx.fillStyle = "#000224";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-function drawBox(x, y, n, m) {
-	if (isPrime(n)) {
-		ctx.fillStyle = "blue";
-	} else {
-		let rem = m % 3;
-		ctx.fillStyle =
-			rem === 0
-				? "#111111"
-				: rem === 1
-					? "#242424"
-					: rem === 2
-						? "#474747"
-						: "#474747";
-	}
-
-	let newX = x - b / 2;
-	let newY = y - b / 2;
-	ctx.fillRect(newX, newY, b + 1, b + 1); // + 1 to fix unwanted spaces between rows
-
-	// writing number
-	if (m <= 1) {
-		ctx.textAlign = "center";
-		ctx.textBaseline = "middle"; // vertical
-		ctx.font = `${fontSize}px Arial`;
-		ctx.fillStyle = "#dadada9e";
-		ctx.fillText(n, x, y);
-	}
 }
 
 function isPrime(n) {
@@ -74,7 +43,40 @@ function isPrime(n) {
 // u = l
 // r2 = 2m
 
-function main(maxRounds = 50) {
+function uval(maxRounds = 50) {
+	const b = 10; // box dimension (bxb)
+
+	function drawBox(x, y, n, m) {
+		if (isPrime(n)) {
+			ctx.fillStyle = "blue";
+		} else {
+			let rem = m % 3;
+			ctx.fillStyle =
+				rem === 0
+					? "#111111"
+					: rem === 1
+						? "#242424"
+						: rem === 2
+							? "#474747"
+							: "#474747";
+		}
+
+		let newX = x - b / 2;
+		let newY = y - b / 2;
+		ctx.fillRect(newX, newY, b + 1, b + 1); // + 1 to fix unwanted spaces between rows
+
+		// writing number
+		if (m <= 1) {
+			ctx.textAlign = "center";
+			ctx.textBaseline = "middle"; // vertical
+			ctx.font = `${fontSize}px Arial`;
+			ctx.fillStyle = "#dadada9e";
+			ctx.fillText(n, x, y);
+		}
+	}
+
+	resetCanvas();
+
 	let currentX = cx;
 	let currentY = cy;
 
@@ -130,5 +132,4 @@ function main(maxRounds = 50) {
 	frame();
 }
 
-resetCanvas();
-main();
+// uval();
