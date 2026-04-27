@@ -68,7 +68,6 @@ function archimedian(
 	}
 
 	frame();
-
 	// ctx.beginPath();
 	// ctx.strokeStyle = "blue";
 	// ctx.lineWidth = 5;

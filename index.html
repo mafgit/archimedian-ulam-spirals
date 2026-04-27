@@ -2,17 +2,28 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="theme-color" content="#03000f"/>
+		<meta name="theme-color" content="#03000f" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Spiral Animations</title>
-		<meta name="description" content="Archimedian & Ulam Spiral Animations">
-		<meta name="author" content="Mohammad Abdullah Farooqui">
+		<meta
+			name="description"
+			content="Archimedian & Ulam Spiral Animations"
+		/>
+		<meta name="author" content="Mohammad Abdullah Farooqui" />
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
 		<div id="intro" class="visible">
-			<h1>SPIRAL ANIMATION</h1>
-
+			<header>
+				<img
+					src="./assets/spiral-solid-full.svg"
+					width="30"
+					height="30"
+					alt=""
+				/>
+				<h1>SPIRAL ANIMATIONS</h1>
+			</header>
+			
 			<h3>Choose</h3>
 
 			<div id="options">
@@ -20,12 +31,18 @@
 					<h2>1. ARCHIMEDIAN SPIRAL</h2>
 
 					<ul>
-						<li>Polar coordinates (r, theta in radians)</li>
+						<li>Polar coordinates (r, θ in radians)</li>
 						<li>Both equal & incrementing at the same time</li>
 						<li>Prime numbers highlighted</li>
 					</ul>
 
-					<button id="archimedian-btn">CONTINUE</button>
+					<button id="archimedian-btn">
+						<img
+							src="./assets/circle-arrow-right-solid-full.svg"
+							width="25"
+						/>
+						<span>CONTINUE</span>
+					</button>
 				</div>
 
 				<div>
@@ -37,22 +54,33 @@
 						<li>Prime numbers highlighted</li>
 					</ul>
 
-					<button id="ulam-btn">CONTINUE</button>
+					<button id="ulam-btn">
+						<img
+							src="./assets/circle-arrow-right-solid-full.svg"
+							width="25"
+						/><span>CONTINUE</span>
+					</button>
 				</div>
 			</div>
 		</div>
 
-		<button id="info-btn">Info</button>
+		<button id="info-btn">
+			<img
+				src="./assets/circle-info-solid-full.svg"
+				width="25"
+				height="25"
+			/>
+		</button>
 		<div class="info"></div>
 
-		<button id="home-btn">Home</button>
+		<button id="home-btn">
+			<img src="./assets/house-solid-full.svg" width="25" height="25" />
+		</button>
 
+		<h2 id="anim-heading">Archimedian</h2>
 		<canvas id="canvas"></canvas>
 
-		<script>
-			let animStopped = true;
-		</script>
-
+		<script src="index.js"></script>
 		<script src="ulam.js"></script>
 		<script src="archimedian.js"></script>
 		<script src="main.js"></script>

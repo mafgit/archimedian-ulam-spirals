@@ -1,31 +1,3 @@
-const ctx = canvas.getContext("2d");
-
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
-
-// center
-const cx = canvas.width / 2;
-const cy = canvas.height / 2;
-
-const fontSize = 8;
-
-function resetCanvas() {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	// bg
-	ctx.fillStyle = "#03000f";
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-function isPrime(n) {
-	if (n <= 1) return false;
-
-	for (let i = 2; i * i <= n; i++) {
-		if (n % i === 0) return false;
-	}
-
-	return true;
-}
-
 //     000000
 //     078900
 //     061200
@@ -124,9 +96,9 @@ function ulam(maxRounds = 50) {
 		if (m < maxRounds) {
 			// requestAnimationFrame(frame);
 			if (!animStopped)
-			setTimeout(() => {
-				frame();
-			}, 0.1);
+				setTimeout(() => {
+					frame();
+				}, 0.1);
 		}
 	}
 

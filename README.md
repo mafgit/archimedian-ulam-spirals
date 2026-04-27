@@ -1,6 +1,6 @@
-# Archimedian & Ulam Spiral Animations
+# Archimedian & Ulam
 
-- Using Vanilla HTML, CSS, JavaScript & JavaScript Canvas API
+> Spiral Animations using HTML, CSS, JavaScript and native canvas API.
 
 
 ### Intro
