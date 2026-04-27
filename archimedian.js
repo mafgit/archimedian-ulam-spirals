@@ -1,4 +1,4 @@
-function archimedian(maxPoints = 1000) {
+function archimedian(onlyPrimes = false, maxPoints = 1000) {
 	resetCanvas();
 
 	const b = 3;
@@ -7,20 +7,24 @@ function archimedian(maxPoints = 1000) {
 		let x = cx + r * Math.cos(t) - b / 2;
 		let y = cy - (r * Math.sin(t) - b / 2);
 
-		// if (isPrime(r)) ctx.fillStyle = "white";
-		// else {
-		const rem = r % 3;
-		if (rem === 0) ctx.fillStyle = "#84edff";
-		else if (rem === 1) ctx.fillStyle = "#ff6a71";
-		else if (rem === 2) ctx.fillStyle = "#8cff5f";
-		else ctx.fillStyle = "black";
+		let prime = isPrime(r);
 
-		// ctx.fillStyle = "#000224";
-		// }
+		if (prime) ctx.fillStyle = "white";
+		else {
+			if (!onlyPrimes) {
+				const rem = r % 3;
+				if (rem === 0) ctx.fillStyle = "#84edff";
+				else if (rem === 1) ctx.fillStyle = "#ff6a71";
+				else if (rem === 2) ctx.fillStyle = "#8cff5f";
+				else ctx.fillStyle = "black";
+			}
+		}
 
-		ctx.beginPath();
-		ctx.roundRect(x, y, b + 1, b + 1, [20]); // + 1 to fix unwanted spaces between rows
-		ctx.fill();
+		if (!onlyPrimes || prime) {
+			ctx.beginPath();
+			ctx.roundRect(x, y, b + 1, b + 1, [20]); // + 1 to fix unwanted spaces between rows
+			ctx.fill();
+		}
 
 		// if (r <= 1) {
 		// 	ctx.textAlign = "center";
@@ -46,7 +50,7 @@ function archimedian(maxPoints = 1000) {
 		prevCoords = drawPoint(i, i, prevCoords);
 
 		i++;
-		if (i <= maxPoints) if (!animStopped) setTimeout(frame, 1);
+		if (i <= maxPoints) if (!animStopped) setTimeout(frame, 30);
 	}
 
 	frame();

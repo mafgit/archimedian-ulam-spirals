@@ -14,12 +14,36 @@ body {
 	overflow: hidden;
 }
 
-#home-btn {
+#home-btn,
+#info-btn {
 	position: absolute;
 	top: 30px;
 	right: 30px;
 	padding: 10px;
 	border-radius: 5px;
+}
+
+#info-btn {
+	right: 100px;
+}
+
+.info {
+	transform: scale(0);
+	opacity: 0;
+	z-index: 10;
+	background: #ffffffda;
+	position: absolute;
+	padding: 10px;
+	border-radius: 10px;
+	color: #000;
+	right: 100px;
+	top: 80px;
+	transition: all 0.3s;
+}
+
+#info-btn.visible:hover ~ .info {
+	opacity: 0.9;
+	transform: scale(1);
 }
 
 #intro {
@@ -123,7 +147,8 @@ input {
 
 #canvas,
 #intro,
-#home-btn {
+#home-btn,
+#info-btn {
 	opacity: 0;
 	pointer-events: none;
 	transition: all 0.3s;
@@ -141,19 +166,22 @@ input {
 	top: 0;
 }
 
-#home-btn {
+#home-btn,
+#info-btn {
 	transform: translate(0, -120%);
 	z-index: 10;
 	font-weight: bold;
 }
 
 #canvas.visible,
-#home-btn.visible {
+#home-btn.visible,
+#info-btn.visible {
 	pointer-events: all;
 	transform: translate(0, 0);
 }
 
-#home-btn.visible {
+#home-btn.visible,
+#info-btn.visible {
 	opacity: 0.75;
 }
 
