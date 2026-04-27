@@ -43,7 +43,7 @@ function isPrime(n) {
 // u = l
 // r2 = 2m
 
-function uval(maxRounds = 50) {
+function ulam(maxRounds = 50) {
 	const b = 10; // box dimension (bxb)
 
 	function drawBox(x, y, n, m) {
